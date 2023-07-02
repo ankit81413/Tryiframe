@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      margin: 20px;
+    }
+    input[type="text"] {
+      width: 200px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button onclick="saveData()">Save</button>
+    <button onclick="displayData()">Display</button>
+    <ul id="dataList"></ul>
+  </div>
+
+  <script>
+    var db;
+    var request = window.indexedDB.open("myDatabase", 1);
+
+    request.onerror = function(event) {
+      console.log("Database error: " + event.target.errorCode);
+    };
+
+    request.onupgradeneeded = function(event) {
+      db = event.target.result;
+
+      if (!db.objectStoreNames.contains("myObjectStore")) {
+        var objectStore = db.createObjectStore("myObjectStore", { keyPath: "id", autoIncrement: true });
+        objectStore.createIndex("name", "name", { unique: false });
+      }
+    };
+
+    request.onsuccess = function(event) {
+      db = event.target.result;
+    };
+
+    function saveData() {
+      var text = document.getElementById("textInput").value;
+
+      var transaction = db.transaction(["myObjectStore"], "readwrite");
+      var objectStore = transaction.objectStore("myObjectStore");
+
+      var data = { name: text };
+
+      var addRequest = objectStore.add(data);
+
+      addRequest.onsuccess = function(event) {
+        console.log("Data added successfully");
+      };
+
+      addRequest.onerror = function(event) {
+        console.log("Error adding data: " + event.target.errorCode);
+      };
+    }
+
+    function displayData() {
+      var transaction = db.transaction(["myObjectStore"], "readonly");
+      var objectStore = transaction.objectStore("myObjectStore");
+
+      var dataList = document.getElementById("dataList");
+      dataList.innerHTML = "";
+
+      objectStore.openCursor().onsuccess = function(event) {
+        var cursor = event.target.result;
+        if (cursor) {
+          var li = document.createElement("li");
+          li.textContent = cursor.value.name;
+          dataList.appendChild(li);
+
+          cursor.continue();
+        }
+      };
+    }
+  </script>
+</body>
+</html>
