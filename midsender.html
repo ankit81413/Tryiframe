@@ -9,6 +9,9 @@
 
 <body>
   <h1>Midsender</h1>
+  <div id="local">
+    
+  </div>
 </body>
 
 
@@ -16,6 +19,17 @@
 
 
 <script>
+  var value=localStorage.getItem("username");
+var mov=localStorage.getItem("mov");
+
+document.getElementById("local").innerHTML=value+"||"+mov;
+
+
+
+
+
+
+
     // Function to get the value of a parameter from the URL
 function getURLParameter(name) {
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -28,7 +42,7 @@ function getURLParameter(name) {
 var mov = getURLParameter('mov');
 
 
-  localStorage.setItem("mov", mov);
+  //localStorage.setItem("mov", mov);
   var currentmov = localStorage.getItem("mov");
   console.log(currentmov);
   
