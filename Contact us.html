@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Your Company Name</title>
+</head>
+
+<style>
+   
+  .text-large {
+    font-size: 14px; /* Adjust the font size as needed */
+}
+
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+
+  }
+
+  header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  section {
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+  }
+
+  section h2 {
+    color: #007BFF;
+  }
+
+  #contact-info p,
+  #business-hours p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  #contact-form label,
+  #contact-form textarea,
+  #contact-form input[type="text"] {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  button[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #location-map {
+    height: 300px;
+    /* Adjust the height of the map as needed */
+    /* Add map styling or embed code here */
+  }
+
+  #image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .image {
+    flex: 1;
+  }
+
+  #privacy-policy a {
+    color: #007BFF;
+  }
+
+  footer {
+    background-color: #F8F9FA;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  
+  /* Media Query for Mobile View */
+
+@media (max-width: 700px) {
+    /* Adjustments for mobile devices */
+
+    /* Header */
+    header {
+        padding: 10px;
+        background-color: red;
+    }
+
+    /* Sections */
+    section {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    section h2 {
+        font-size: 18px;
+    }
+
+    /* Contact Form */
+    #contact-form label, #contact-form textarea, #contact-form input[type="text"] {
+        margin: 5px 0;
+    }
+
+    button[type="submit"] {
+        padding: 8px 16px;
+    }
+
+    /* Map (Set a fixed height for better mobile display) */
+    #location-map {
+        height: 200px;
+    }
+
+    /* Image Gallery (Set a fixed width for images on mobile) */
+    .image {
+        flex: 1;
+        max-width: 100%;
+    }
+}
+
+</style>
+
+<body>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+
+  <section id="contact-info">
+    <h2>Contact Information</h2>
+    <p>
+      <strong>Your Company Name</strong><br>
+      123 Main Street<br>
+      City, State 12345<br>
+      Country
+    </p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:ankitsen81413@gmail.com">contact@yourcompany.com</a><br>
+      <strong>Phone:</strong> <a href="tel:+91 7027522310">+91 70275-22310</a>
+    </p>
+  </section>
+
+  <section id="business-hours">
+    <h2>Business Hours</h2>
+    <p>
+      Monday - Friday: 9:00 AM - 6:00 PM<br>
+      Saturday: 10:00 AM - 3:00 PM<br>
+      Sunday: Closed
+    </p>
+  </section>
+
+  <section id="contact-form">
+    <h2>Contact Form</h2>
+    <form action="/submit_contact" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section id="location-map">
+    <h2>Location Map</h2>
+    <!-- You can embed a Google Map or another map service here -->
+  </section>
+
+  <section id="image-gallery">
+    <h2>Image Gallery</h2>
+    <div class="image">
+      <img src="image1.jpg" alt="Image 1">
+    </div>
+    <div class="image">
+      <img src="image2.jpg" alt="Image 2">
+    </div>
+    <div class="image">
+      <img src="image3.jpg" alt="Image 3">
+    </div>
+  </section>
+
+  <section id="privacy-policy">
+    <h2>Privacy Policy</h2>
+    <p>
+      Our <a href="/privacy-policy">Privacy Policy</a> describes how we handle your data and protect your privacy.
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
